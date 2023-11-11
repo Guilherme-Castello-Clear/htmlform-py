@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -8,7 +8,9 @@ def home():
 
 @app.route("/login", methods=["POST"])
 def receive_data():
-    return "working"
+    name = request.form["username"]
+    password = request.form["password"]
+    return f"<h1>Username: {name} | Password: {password}</h1>"
 
 
 if __name__ == "__main__":
